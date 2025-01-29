@@ -1,0 +1,266 @@
+/* Grid container that adjusts based on screen size */
+.image-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Adjust column size dynamically */
+  gap: 12px; /* Reduced gap between images */
+  padding: 16px;
+  justify-items: center; /* Center images horizontally */
+  align-items: start; /* Ensure images align to the top */
+}
+
+/* Styling individual image items */
+.image-item {
+  display: flex;
+  justify-content: center;
+  align-items: start; /* Align to the top */
+  width: 100%;
+}
+
+/* Ensure images maintain their original aspect ratio and don't stretch */
+.uploaded-image {
+  width: 100%; /* Take full width of the cell */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensures the image is contained without stretching */
+  border-radius: 23px; /* Slightly reduced border radius */
+  border: 3px solid rgba(255, 255, 255, 0.5); /* Transparent border */
+  background-clip: padding-box; /* Ensures border doesn't overlap image */
+}
+
+/* Portrait alignment */
+.portrait-class {
+  object-fit: contain;
+}
+
+/* Landscape alignment */
+.landscape-class {
+  object-fit: cover;
+}
+
+/* Random rotation class */
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+/* Custom masonry grid */
+.my-masonry-grid {
+  display: flex;
+  margin-left: -12px; /* Adjust for gap between columns */
+  padding: 16px; /* Add padding around the grid */
+  width: auto;
+  margin-top: 40px;
+}
+
+.my-masonry-grid_column {
+  padding-left: 12px; /* Reduced gap size */
+  background-clip: padding-box;
+  
+  /* Add vertical spacing between items */
+  > div {
+    margin-bottom: 12px; /* Add gap between images in each column */
+  }
+}
+
+/* Additional CSS for aligning navbar next to the buttons */
+.navbar-container {
+  margin-left: auto; /* Pushes the navbar to the right side */
+  display: flex;
+  align-items: center;/* Ensures the navbar is aligned vertically with the buttons */
+}
+/* Additional CSS for aligning navbar next to the buttons */
+.ml-auto {
+  margin-left: auto; /* Pushes the navbar to the right side */
+}
+
+/* Style for modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Style for modal content */
+.modal-content {
+  position: relative;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the modal icons */
+.modal-content button {
+  cursor: pointer;
+}
+
+
+/* General Sidebar Styling */
+.sidebar-container {
+  background-color: white; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Add upwards movement animation */
+  animation: scrollUp 5s linear infinite; /* Apply scrollUp animation to the sidebar */
+}
+
+/* Sidebar Item Styling */
+.sidebar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;  /* Decreased width */
+  height: 80px; /* Decreased height */
+  border-radius: 15px;
+  background: linear-gradient(to bottom right, #6a5acd, #8a2be2); /* Gradient background */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: scrollUp 5s linear infinite; /* Apply scrolling animation to sidebar items */
+}
+
+/* Sidebar Scroll Animation */
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0); /* Start at normal position */
+  }
+  100% {
+    transform: translateY(-100px); /* Move upwards */
+  }
+}
+
+/* Navbar Scroll Up Effect */
+.navbar-container {
+  margin-left: auto; /* Pushes the navbar to the right side */
+  display: flex;
+  align-items: center; /* Ensures the navbar is aligned vertically with the buttons */
+  animation: navbarScrollUp 5s linear infinite; /* Apply scroll-up animation */
+}
+
+/* Scroll Up Animation for Navbar */
+@keyframes navbarScrollUp {
+  0% {
+    transform: translateY(0); /* Start at normal position */
+  }
+  100% {
+    transform: translateY(-50px); /* Move upwards by 50px */
+  }
+}
+
+/* Other styling adjustments for navbar and sidebar items */
+
+/* Hover Effects */
+.sidebar-item:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Animation */
+.icon {
+  animation: bounce 1.80s infinite;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Text Styling */
+.sidebar-item div {
+  color: white; /* White text */
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .sidebar-container {
+    width: auto;
+    padding: 1rem;
+  }
+
+  .sidebar-item {
+    width: 70px;  /* Slightly smaller size for smaller screens */
+    height: 70px;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+}
+
+
+.custom-cursor {
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+  transition: all 0.3s ease;
+  animation: bubble-animation 0.8s infinite alternate;
+}
+
+@keyframes bubble-animation {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 50px;
+    height: 50px;
+    opacity: 0.6;
+  }
+}
+
+.cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Ensure it doesn’t block interactions */
+  overflow: hidden;
+  z-index: 9999; /* Keep it on top of all elements */
+}
+
+.cursor-particle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255, 105, 180, 0.7); /* Light pink color */
+  animation: particle-fade 0.5s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes particle-fade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+
+* {
+  cursor: none; /* Hide default cursor */
+}
