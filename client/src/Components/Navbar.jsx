@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom'; // Import Link for navigation
 const NavBar = () => {
   // Profile image URLs (using paths relative to the public folder)
   const profiles = {
-    akila: "/assets/akila.jpg",
-    padma: "/assets/padma.jpg",
-    mom: "/assets/mom.jpeg",
-    dad: "/assets/dad.jpeg",
-    john: "/assets/dad.jpeg", // New profiles
-    emma: "/assets/dad.jpeg",
-    liam: "/assets/dad.jpeg",
-    sophia: "/assets/dad.jpeg",
-    michael: "/assets/dad.jpeg",
-    olivia: "/assets/dad.jpeg",
+    akila: "/assets/1.jpg",
+    padma: "/assets/2.jpg",
+    mom: "/assets/3.jpg",
+    dad: "/assets/4.jpg",
+    john: "/assets/5.jpg", // New profiles
+    emma: "/assets/6.jpg",
+    liam: "/assets/7.jpg",
+    sophia: "/assets/8.jpg",
+    michael: "/assets/9.jpg",
+    olivia: "/assets/10.jpg",
   };
 
   return (
