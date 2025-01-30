@@ -5,10 +5,10 @@ import db from '../DB/db.js'; // Import database connection
 
 const router = express.Router();
 
-// Configure multer for file storage
+// Multer storage configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './uploads/eventSideBar'); // Directory to store event sidebar images
+    cb(null, './uploads/eventSideBar'); // Save files in this directory
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// API to upload an image
+// API to upload event sidebar images
 router.post('/upload-event-sidebar-image', upload.single('image'), (req, res) => {
   const { event_id } = req.body;
   if (!event_id || !req.file) {
@@ -37,10 +37,10 @@ router.post('/upload-event-sidebar-image', upload.single('image'), (req, res) =>
   });
 });
 
-// API to fetch images
+// API to fetch sidebar images
 router.get('/get-event-sidebar-images', (req, res) => {
   const query = `
-    SELECT esi.image_id, e.event_name, esi.image_url, esi.uploaded_date
+    SELECT esi.image_id, e.event_id, e.event_name, esi.image_url, esi.uploaded_date
     FROM event_sidebar_images esi
     JOIN events e ON esi.event_id = e.event_id
   `;
