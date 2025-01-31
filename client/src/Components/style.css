@@ -118,16 +118,19 @@
 
 /* Sidebar Item Styling */
 .sidebar-item {
-  @apply flex flex-col items-center justify-center w-20 h-20 rounded-lg border border-gray-300 bg-gradient-to-br from-[#eeedf2] to-[#ebdcfa] transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;  /* Decreased width */
+  height: 80px; /* Decreased height */
+  border-radius: 15px;
+  border: solid rgb(84, 83, 83) 1px; 
+  background: linear-gradient(to bottom right, #eeedf2, #ebdcfa); /* Gradient background */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: scrollUp 5s linear infinite; /* Apply scrolling animation to sidebar items */
 }
 
-.upload-btn {
-  @apply flex items-center justify-center w-20 h-20 bg-gray-200 bg-opacity-40 backdrop-blur-md rounded-xl hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out cursor-pointer;
-}
-
-.upload-btn span {
-  @apply text-sm font-semibold text-gray-700;
-}
 
 /* Sidebar Scroll Animation */
 @keyframes scrollUp {
@@ -160,11 +163,6 @@
 /* Other styling adjustments for navbar and sidebar items */
 
 
-/* Hover and active states */
-.sidebar-item:hover {
-  @apply transform translate-y-1 shadow-xl;
-}
-
 /* Icon Animation */
 .icon {
   animation: bounce 1.80s infinite;
@@ -182,8 +180,12 @@
 
 /* Text Styling */
 .sidebar-item div {
-  @apply text-white font-semibold text-xs text-center mt-2 text-shadow-md;
+  color: white; /* White text */
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
 }
+
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {

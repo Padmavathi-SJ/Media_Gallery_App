@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import EventSidebarUpload from './EventSidebarUpload';
 import './style.css';
 
 const EventsSideBar = () => {
   const [events, setEvents] = useState([]);
   const [sidebarImages, setSidebarImages] = useState({});
-  const [showUpload, setShowUpload] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -47,35 +45,28 @@ const EventsSideBar = () => {
   };
 
   return (
-    <div className="sidebar-container">
+    <div className="sidebar-container flex flex-col items-center bg-white bg-opacity-90 backdrop-blur-md rounded-lg h-full w-auto space-y-2 p-2">
       {events.length > 0 ? (
         events.map((event) => (
           <div
             key={event.event_id}
-            className="sidebar-item"
+            className="flex flex-col items-center space-y-2 cursor-pointer"
             onClick={() => handleEventClick(event.event_id)}
           >
             <img
               src={`http://localhost:5000${sidebarImages[event.event_id]}`}
               alt={event.event_name}
-              className="w-16 h-16 object-cover rounded-lg border-2 border-white shadow-md"
+              className="w-20 h-20 object-cover rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
             />
-            <div>{event.event_name}</div>
+            <div className="text-gray-800 text-sm font-semibold">{event.event_name}</div>
           </div>
         ))
       ) : (
         <p className="text-gray-500 text-sm">No events with images found.</p>
       )}
 
-      {/* Upload Section */}
-      <div
-        className="upload-btn"
-        onClick={() => setShowUpload(!showUpload)}
-      >
-        <span>Upload Image</span>
-      </div>
+      
 
-      {showUpload && <EventSidebarUpload />}
     </div>
   );
 };
