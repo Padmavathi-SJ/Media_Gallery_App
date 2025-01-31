@@ -49,6 +49,18 @@ router.get('/get-images', (req, res) => {
     });
   });
   
+// Route to fetch all available cadets
+router.get('/cadets', (req, res) => {
+  const query = 'SELECT * FROM cadets';
 
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching cadets:', err);
+      return res.status(500).json({ message: 'Error fetching cadets from the database' });
+    }
+
+    res.json(results);
+  });
+});
 
 export default router;

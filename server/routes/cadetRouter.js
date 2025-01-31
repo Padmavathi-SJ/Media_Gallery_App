@@ -18,19 +18,42 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// API route to fetch cadets
-router.get('/cadets', (req, res) => {
-  const query = 'SELECT * FROM cadets';
+/// Assuming this is your Express router file
 
-  db.query(query, (err, results) => {
+// API route to get cadet images
+router.get('/get-cadet-images/:cadetId', (req, res) => {
+  const { cadetId } = req.params; // Capture cadetId from the URL
+  const query = 'SELECT * FROM cadet_images WHERE cadet_id = ?'; // Query to get cadet images
+
+  db.query(query, [cadetId], (err, results) => {
     if (err) {
-      console.error('Error fetching cadets:', err);
-      return res.status(500).json({ message: 'Error fetching cadets from the database' });
+      console.error('Error fetching cadet images:', err);
+      return res.status(500).json({ message: 'Error fetching cadet images from the database' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'No images found for this cadet' });
     }
 
     res.json(results);
   });
 });
+
+
+// API route to delete a cadet image
+router.delete('/delete-cadet-image/:image_id', (req, res) => {
+  const { image_id } = req.params;
+  const query = 'DELETE FROM cadet_images WHERE image_id = ?'; // Query to delete cadet image
+
+  db.query(query, [image_id], (err, results) => {
+    if (err) {
+      console.error('Error deleting cadet image:', err);
+      return res.status(500).json({ message: 'Error deleting cadet image from the database' });
+    }
+    res.status(200).send('Image deleted successfully');
+  });
+});
+
 
 // API route to upload cadet image
 router.post('/cadets/:cadetId/upload', upload.single('image'), (req, res) => {
