@@ -19,7 +19,7 @@ const EventsSideBar = () => {
           imageMap[item.event_id] = item.image_url;
         });
         setSidebarImages(imageMap);
-        return imageMap; // Return for chaining
+        return imageMap;
       } catch (error) {
         console.error('Error fetching sidebar images:', error);
         return {};
@@ -39,7 +39,6 @@ const EventsSideBar = () => {
       }
     };
 
-    // Ensure images are loaded first
     fetchSidebarImages().then(fetchEvents);
   }, []);
 
@@ -48,20 +47,20 @@ const EventsSideBar = () => {
   };
 
   return (
-    <div className="sidebar-container flex flex-col items-center bg-white h-full w-auto space-y-3 p-3 animate-upward">
+    <div className="sidebar-container">
       {events.length > 0 ? (
         events.map((event) => (
           <div
             key={event.event_id}
-            className="sidebar-item relative flex flex-col items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 shadow-lg border-2 border-indigo-300 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out cursor-pointer"
+            className="sidebar-item"
             onClick={() => handleEventClick(event.event_id)}
           >
             <img
               src={`http://localhost:5000${sidebarImages[event.event_id]}`}
               alt={event.event_name}
-              className="w-12 h-12 object-cover rounded-lg"
+              className="w-16 h-16 object-cover rounded-lg border-2 border-white shadow-md"
             />
-            <div className="mt-2 text-xs font-semibold text-white text-center">{event.event_name}</div>
+            <div>{event.event_name}</div>
           </div>
         ))
       ) : (
@@ -70,10 +69,10 @@ const EventsSideBar = () => {
 
       {/* Upload Section */}
       <div
-        className="sidebar-item w-20 h-20 flex flex-col items-center justify-center bg-gray-200 shadow-lg border-2 border-gray-400 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out cursor-pointer"
+        className="upload-btn"
         onClick={() => setShowUpload(!showUpload)}
       >
-        <span className="text-center text-sm font-semibold">Upload Image</span>
+        <span>Upload Image</span>
       </div>
 
       {showUpload && <EventSidebarUpload />}
