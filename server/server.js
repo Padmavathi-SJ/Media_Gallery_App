@@ -10,6 +10,7 @@ import eventsRouter from './routes/eventRouter.js';
 import eventsHomeRouter from './routes/eventsHomeRouter.js';
 import createEvent from './routes/createEvent.js';
 import eventSideBarRouter from './routes/eventSideBar.js';
+import cadetRouter from './routes/cadetRouter.js';
 
 const app = express();
 const port = 5000;
@@ -31,6 +32,7 @@ app.use('/api', eventsRouter);
 app.use('/api', eventsHomeRouter);
 app.use('/api', createEvent);
 app.use('/api', eventSideBarRouter);
+app.use('/api', cadetRouter);
 
 // Server start
 app.listen(port, () => {
