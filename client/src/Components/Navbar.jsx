@@ -2,18 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
 
 const NavBar = () => {
-  // Profile image URLs (using paths relative to the public folder)
+  // Profile image URLs for cadets (using paths relative to the public folder)
   const profiles = {
-    akila: "/assets/1.jpg",
-    padma: "/assets/2.jpg",
-    mom: "/assets/3.jpg",
-    dad: "/assets/4.jpg",
-    john: "/assets/5.jpg", // New profiles
-    emma: "/assets/6.jpg",
-    liam: "/assets/7.jpg",
-    sophia: "/assets/8.jpg",
-    michael: "/assets/9.jpg",
-    olivia: "/assets/10.jpg",
+    cadet1: "/assets/1.jpg",
+    cadet2: "/assets/2.jpg",
+    cadet3: "/assets/3.jpg",
+    cadet4: "/assets/4.jpg",
+    cadet5: "/assets/5.jpg",
+    cadet6: "/assets/6.jpg",
+    cadet7: "/assets/7.jpg",
+    cadet8: "/assets/8.jpg",
+    cadet9: "/assets/9.jpg",
+    cadet10: "/assets/10.jpg",
   };
 
   return (
