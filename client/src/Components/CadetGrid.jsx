@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Masonry from 'react-masonry-css'; // For masonry grid layout
 import { HiTrash } from 'react-icons/hi';
+import CadetTopBar from './CadetsTopBar';  // Import TopBar
+import LeftCadetSideBar from './LeftCadetSidebar';  // Import Left Sidebar
+import RightCadetSideBar from './RightCadetSidebar';  // Import Right Sidebar
 
 const CadetGrid = () => {
   const { cadetId } = useParams(); // Get cadetId from URL params
@@ -51,9 +54,16 @@ const CadetGrid = () => {
   };
 
   return (
-    <div className="flex">
-      <div className="flex-1">
-        {/* Image Grid */}
+    <div className="layout">
+      {/* Left Sidebar */}
+      <div className="left-cadet-sidebar">
+        <LeftCadetSideBar />
+      </div>
+      
+      {/* Main Content: Image Grid */}
+      <div className="content flex-grow ml-24 mr-24">  {/* Adjusted margin for grid */}
+        <CadetTopBar />  {/* Top Bar */}
+
         {loading ? (
           <p>Loading cadet images...</p>
         ) : (
@@ -84,6 +94,11 @@ const CadetGrid = () => {
             ))}
           </Masonry>
         )}
+      </div>
+
+      {/* Right Sidebar */}
+      <div className="right-cadet-sidebar">
+        <RightCadetSideBar />
       </div>
     </div>
   );

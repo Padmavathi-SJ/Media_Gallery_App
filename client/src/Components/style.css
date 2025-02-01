@@ -262,3 +262,73 @@
 * {
   cursor: none; /* Hide default cursor */
 }
+
+
+
+/* Layout wrapper */
+.layout {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent entire page scroll */
+}
+
+/* Left Sidebar */
+.left-cadet-sidebar {
+  position: fixed;
+  left: 0;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 80px; /* Sidebar width */
+  height: 200px; /* Sidebar height */
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+/* Right Sidebar */
+.right-cadet-sidebar {
+  position: fixed;
+  right: 0;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 80px;
+  height: 200px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+/* Content Area */
+.content {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable vertical scrolling for grid only */
+  padding: 10px;
+  margin-left: 80px; /* Leave space after left sidebar */
+  margin-right: 80px; /* Leave space before right sidebar */
+  height: 100vh; /* Ensure full viewport height */
+}
+
+
+/* Image Grid */
+.my-masonry-grid {
+  display: flex;
+  margin-left: -12px;
+  width: auto;
+
+}
+
+/* Sidebar and Content Responsiveness */
+@media (max-width: 768px) {
+  .left-cadet-sidebar,
+  .right-cadet-sidebar {
+    width: 50px;
+    height: 160px;
+    padding: 5px;
+  }
+  .content {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+}
