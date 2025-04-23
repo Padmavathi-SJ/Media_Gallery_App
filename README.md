@@ -11,8 +11,8 @@
 
 1. Clone the repo:
    ```
-   git clone https://github.com/yourusername/media-gallery-app.git
-   cd media-gallery-app
+   git clone https://github.com/Padmavathi-SJ/Media_Gallery_App.git
+   cd Media_Gallery_App
    ```
    
 2. Install dependencies:
